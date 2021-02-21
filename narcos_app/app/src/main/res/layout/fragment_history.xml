@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/history_layout"
+    android:background="@color/background"
+    tools:context=".fragments.HistoryFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Historial de compra"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="15dp">
+
+            </TextView>
+
+            <HorizontalScrollView
+                android:id="@+id/activity_horizontalView1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scrollbars="horizontal|vertical">
+
+                <TableLayout
+                    android:id="@+id/buyHistoryTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                </TableLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Historial de venta"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:textSize="15dp">
+
+            </TextView>
+
+            <HorizontalScrollView
+                android:id="@+id/activity_horizontalView2"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scrollbars="horizontal|vertical">
+
+                <TableLayout
+                    android:id="@+id/salesHistoryTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                </TableLayout>
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

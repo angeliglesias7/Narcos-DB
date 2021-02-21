@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">NarcosDB</string>
+    <string name="app_code">7777</string>
+    <string name="login">Inicio de sesión</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Narcos DB</string>
+    <string name="nav_header_subtitle">Creado por: Angel Iglesias Quintáns</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_title">Narcos DB</string>
+
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_drug">Drogas</string>
+    <string name="menu_warehouse_money">Almacén de dinero</string>
+    <string name="menu_drug_warehouse">Almacén de drogas</string>
+    <string name="menu_contact">Contactos</string>
+    <string name="menu_history">Historial</string>
+    <string name="menu_policeman">Policías</string>
+    <string name="menu_loans">Préstamos</string>
+    <string name="menu_buys">Compras</string>
+    <string name="menu_close_session">Cerrar sesión</string>
+    <string name="string_close_session">Está seguro que quiere cerrar la sesión actual?</string>
+
+    <string name="request_error">Error al realizar la operación</string>
+    <string name="login_error">Por favor, introduzca un email y una contraseña</string>
+    <string name="login_error_result">El usuario o la contraseña no son válidos</string>
+    <string name="fields_error">Rellene correctamente los campos</string>
+    <string name="fields_transfer_error">Error al seleccionar el almacén o la cantidad de dinero</string>
+    <string name="successful_buy">Compra realizada correctamente</string>
+    <string name="successful_sale">Venta realizada correctamente</string>
+    <string name="successful_transfer">Transferencia realizada correctamente</string>
+    <string name="create_drug_error">Error al crear la droga</string>
+    <string name="update_drug_error">Error al actualizar la droga</string>
+    <string name="delete_drug_error">Error al eliminar la droga</string>
+    <string name="create_mw_error">Error al crear el almacén</string>
+    <string name="update_mw_error">Error al actualizar el almacén</string>
+    <string name="delete_mw_error">Error al eliminar el almacén</string>
+    <string name="create_contact_error">Error al crear el contacto</string>
+    <string name="update_contact_error">Error al actualizar el contacto</string>
+    <string name="delete_contact_error">Error al eliminar el contacto</string>
+    <string name="destroy_mw_error">Error al destruír el almacén</string>
+    <string name="internet_error">Por favor, conéctese a internet para obtener la información</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

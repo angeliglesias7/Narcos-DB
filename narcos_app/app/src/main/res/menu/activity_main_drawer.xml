@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_drug"
+            android:icon="@drawable/drug_icon_foreground"
+            android:title="@string/menu_drug" />
+        <item
+            android:id="@+id/nav_money_warehouse"
+            android:icon="@drawable/money_icon_foreground"
+            android:title="@string/menu_warehouse_money" />
+        <item
+            android:id="@+id/nav_drug_warehouse"
+            android:icon="@drawable/house_icon_foreground"
+            android:title="@string/menu_drug_warehouse" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/contact_icon_foreground"
+            android:title="@string/menu_contact" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/history_icon_foreground"
+            android:title="@string/menu_history" />
+        <item
+            android:id="@+id/nav_buys"
+            android:icon="@drawable/shop_icon_foreground"
+            android:title="@string/menu_buys" />
+        <item
+            android:id="@+id/nav_loans"
+            android:icon="@drawable/loan_icon_foreground"
+            android:title="@string/menu_loans" />
+
+
+    </group>
+</menu>

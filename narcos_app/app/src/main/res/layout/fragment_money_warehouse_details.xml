@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newMoneyWarehouse_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".fragments.detailsFragments.MoneyWarehouseDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_gravity="center"
+                    android:text="Nombre del almacén: "
+                    android:layout_margin="20dp"></TextView>
+
+                <EditText
+                    android:id="@+id/eMWName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Nombre del almacén"
+                    android:inputType="text"
+                    android:layout_margin="20dp"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:text="Lugar: "></TextView>
+
+                <EditText
+                    android:id="@+id/eMWPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Lugar"
+                    android:layout_margin="20dp"
+                    android:inputType="text"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:text="Metros cuadrados: "></TextView>
+
+                <EditText
+                    android:id="@+id/eMWM2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Metros cuadrados"
+                    android:inputType="number"
+                    android:layout_margin="20dp"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:text="Cantidad de dinero (€): "
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"></TextView>
+
+                <EditText
+                    android:id="@+id/eMWAmountMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Cantidad de dinero"
+                    android:layout_margin="20dp"
+                    android:inputType="number"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/saveMoneyWarehouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:text="Guardar almacén"></android.widget.Button>
+
+            <android.widget.Button
+                android:id="@+id/deleteMoneyWarehouse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:text="Eliminar almacén"></android.widget.Button>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
