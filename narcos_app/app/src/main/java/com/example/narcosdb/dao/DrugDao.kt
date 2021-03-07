@@ -3,11 +3,12 @@ package com.example.narcosdb.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.narcosdb.entity.Drug
+import io.reactivex.Completable
 
 @Dao
 interface DrugDao {
     @Insert
-    suspend fun insert(drug: Drug?)
+    fun insert(drug: Drug?)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(drug: Drug?)

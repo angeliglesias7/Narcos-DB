@@ -96,5 +96,5 @@ class DrugDetailsFragment : Fragment() {
     }
 
     private val drug: Drug
-        private get() = Drug(eDrugName!!.text.toString(), eDrugPrice!!.text.toString().toFloat(), eDrugQuality!!.text.toString().toInt(), eDrugDescription!!.text.toString())
+        get() = Drug(eDrugName!!.text.toString(), eDrugPrice!!.text.toString().toDouble(), eDrugQuality!!.text.toString().toInt(), eDrugDescription!!.text.toString())
 }

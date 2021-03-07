@@ -4,10 +4,11 @@ package com.example.narcosdb.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.narcosdb.database.BuysAndSalesDatabase
-import com.example.narcosdb.entity.DrugBuy
-import com.example.narcosdb.entity.DrugSales
+import androidx.lifecycle.viewModelScope
+import com.example.narcosdb.database.*
+import com.example.narcosdb.entity.*
 import com.example.narcosdb.repository.BuysAndSalesRepo
+import kotlinx.coroutines.launch
 
 class BuysAndSalesViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,9 +18,10 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
     private val salesHistory: LiveData<List<DrugSales>>
 
     init {
-        val buyDao = BuysAndSalesDatabase.getBuyInstance(application).buyDao()
-        val salesDao = BuysAndSalesDatabase.getSalesInstance(application).salesDao()
-        repository = BuysAndSalesRepo(buyDao, salesDao)
+        val buyDao = DrugDatabase.getInstance(application).buyDao()
+        val salesDao = DrugDatabase.getInstance(application).salesDao()
+        val mwDao = DrugDatabase.getInstance(application).moneyWarehouseDao()
+        repository = BuysAndSalesRepo(buyDao, salesDao, mwDao)
         buyHistory = repository.buyHistory
         salesHistory = repository.salesHistory
     }
@@ -27,4 +29,8 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
     fun getBuyHistory() = repository.buyHistory
 
     fun getSalesHistory() = repository.salesHistory
+
+    fun buyDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) = viewModelScope.launch {
+        repository.buyDrug(drug, mw, dw, contact, amount)
+    }
 }

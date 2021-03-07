@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newContact_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".fragments.detailsFragments.ContactDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Apodo: "
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="20dp"></TextView>
+
+                <EditText
+                    android:id="@+id/eContactSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Apodo"
+                    android:inputType="text"
+                    android:layout_margin="20dp"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:text="DNI: "
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"></TextView>
+
+                <EditText
+                    android:id="@+id/eContactPassport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="DNI"
+                    android:inputType="text"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:text="Teléfono: "></TextView>
+
+                <EditText
+                    android:id="@+id/eContactPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Teléfono"
+                    android:inputType="number"
+                    android:layout_margin="20dp"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección: "
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_margin="20dp"></TextView>
+
+                <EditText
+                    android:id="@+id/eContactAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:backgroundTint="@color/teal_700"
+                    android:hint="Dirección"
+                    android:layout_margin="20dp"
+                    android:inputType="text"
+                    ></EditText>
+
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/saveContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:background="@drawable/button_rounded"
+                android:textColor="@color/white"
+                android:text="Guardar contacto"></android.widget.Button>
+
+            <android.widget.Button
+                android:id="@+id/deleteContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:background="@drawable/button_rounded"
+                android:textColor="@color/white"
+                android:text="Eliminar contacto"></android.widget.Button>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

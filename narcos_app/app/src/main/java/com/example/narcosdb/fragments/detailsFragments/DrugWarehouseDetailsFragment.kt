@@ -21,7 +21,7 @@ class DrugWarehouseDetailsFragment : Fragment() {
     private var eDwM2: EditText? = null
     private var saveDw: Button? = null
     private var deleteDw: Button? = null
-    private var destroyDw: Button? ? = null
+    private var destroyDw: Button? = null
     private var isNewDw: Boolean? = null
     private var dwViewModel: DrugWarehouseViewModel? = null
 
@@ -82,6 +82,6 @@ class DrugWarehouseDetailsFragment : Fragment() {
     }
 
     private val getDrugWarehouse: DrugWarehouse
-        private get() = DrugWarehouse(eDwName!!.text.toString(), eDwPlace!!.text.toString(), eDwM2!!.text.toString().toInt())
+        get() = DrugWarehouse(eDwName!!.text.toString(), eDwPlace!!.text.toString(), eDwM2!!.text.toString().toInt())
 
 }

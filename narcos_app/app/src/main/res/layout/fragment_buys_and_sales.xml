@@ -164,6 +164,7 @@
                     android:backgroundTint="@color/teal_700"
                     android:inputType="number"
                     android:layout_margin="20dp"
+                    android:gravity="center"
                     ></EditText>
 
             </LinearLayout>

@@ -57,8 +57,6 @@ class HistoryFragment : Fragment() {
             viewLifecycleOwner,
             Observer<List<DrugBuy>> { list -> //called every time data changes
                 buyHistoryList = list as java.util.ArrayList<DrugBuy>
-                println("Está entrando")
-                println(list.size)
                 fillBuyTable(buyHistoryList)
             })
     }
@@ -68,8 +66,6 @@ class HistoryFragment : Fragment() {
             viewLifecycleOwner,
             Observer<List<DrugSales>> { list -> //called every time data changes
                 salesHistoryList = list as java.util.ArrayList<DrugSales>
-                println("Está entrando")
-                println(list.size)
                 fillSalesTable(salesHistoryList)
             })
     }

@@ -40,11 +40,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.wear:wear:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     apply plugin: 'kotlin-kapt'
+    compileOnly 'com.google.android.wearable:wearable:2.6.0'
 
     def room_version = "2.2.6"
     def lifecycle_version = "2.2.0"
@@ -63,4 +65,7 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
+
+    //RxJava
+    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.1.1'
 }

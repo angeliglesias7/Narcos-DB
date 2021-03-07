@@ -83,7 +83,7 @@ class MoneyWarehouseDetailsFragment : Fragment() {
     }
 
     private val getMoneyWarehouse: MoneyWarehouse
-        private get() = MoneyWarehouse(eMwName!!.text.toString(), eMwPlace!!.text.toString(), eMwM2!!.text.toString().toInt(), eMwAmountMoney!!.text.toString().toFloat())
+        get() = MoneyWarehouse(eMwName!!.text.toString(), eMwPlace!!.text.toString(), eMwM2!!.text.toString().toInt(), eMwAmountMoney!!.text.toString().toDouble())
 
 
 }

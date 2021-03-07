@@ -134,8 +134,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         editor.clear().commit()
     }
 
-    private fun loadUsername(): String? {
-        val preferences = applicationContext.getSharedPreferences("preferences", Context.MODE_PRIVATE)
-        return preferences.getString("username", null)
-    }
 }

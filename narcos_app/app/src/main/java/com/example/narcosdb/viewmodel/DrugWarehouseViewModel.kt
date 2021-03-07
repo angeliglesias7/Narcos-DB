@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.narcosdb.database.DrugWarehouseDatabase
+import com.example.narcosdb.database.DrugDatabase
 import com.example.narcosdb.entity.DrugWarehouse
 import com.example.narcosdb.repository.DrugWarehouseRepo
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ class DrugWarehouseViewModel(application: Application): AndroidViewModel(applica
     val allDrugWarehouses: LiveData<List<DrugWarehouse>>
 
     init {
-        val drugWarehouseDao = DrugWarehouseDatabase.getInstance(application).drugWarehouseDao()
+        val drugWarehouseDao = DrugDatabase.getInstance(application).drugWarehouseDao()
         repository = DrugWarehouseRepo(drugWarehouseDao)
         allDrugWarehouses = repository.allDrugWarehouses
     }

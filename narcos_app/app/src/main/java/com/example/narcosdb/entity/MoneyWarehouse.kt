@@ -4,14 +4,14 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "moneywarehouse") //room ; to create sqlite objects //one table
+@Entity(tableName = "moneywarehouse")
 class MoneyWarehouse{
     @field:PrimaryKey var name: String
     var place: String
     var m2: Int
-    var amountMoney: Float
+    var amountMoney: Double
 
-    constructor(name: String, place: String, m2: Int, amountMoney: Float) {
+    constructor(name: String, place: String, m2: Int, amountMoney: Double) {
         this.name = name
         this.place = place
         this.m2 = m2
@@ -23,6 +23,6 @@ class MoneyWarehouse{
         name = ""
         place = ""
         m2 = 0
-        amountMoney = 0F
+        amountMoney = 0.0
     }
 }

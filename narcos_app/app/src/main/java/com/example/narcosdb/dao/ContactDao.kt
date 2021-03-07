@@ -15,6 +15,6 @@ interface ContactDao {
     @Delete
     fun delete(contact: Contact?)
 
-    @get:Query("SELECT * FROM contact")
-    val all: LiveData<List<Contact?>?>?
+    @Query("SELECT * FROM contact")
+    fun getAll(): LiveData<List<Contact>>
 }

@@ -86,7 +86,7 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
 
     private fun getAllWarehouses() {
         mwViewModel?.getAllWarehouses()?.observe(
-            viewLifecycleOwner,
+            activity!!,
             Observer<List<MoneyWarehouse>> { list -> //called every time data changes
                 moneyWarehouseList = list as java.util.ArrayList<MoneyWarehouse>
                 println("Está entrando")
@@ -97,7 +97,7 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
     }
 
     private fun getAllMoney() {
-        mwViewModel?.getAllMoney()!!.observe(viewLifecycleOwner,
+        mwViewModel?.getAllMoney()!!.observe(activity!!,
             Observer<Float> { aFloat ->
                 if (aFloat != null) {
                     totalMoney!!.text = "$aFloat €"
@@ -228,8 +228,8 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
     }
 
     private fun checkFields(): Boolean {
-        if (amountToTransfer!!.text.toString().toFloat() > 0 &&
-            spinner1!!.selectedItem.toString() != spinner2!!.selectedItem.toString()
+        if (!amountToTransfer?.text.isNullOrEmpty() && amountToTransfer?.text.toString().toFloat() > 0 &&
+            spinner1?.selectedItem.toString() != spinner2?.selectedItem.toString()
         ) {
             return true
         }
@@ -239,13 +239,11 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
     private fun getValues() {
         for (i in moneyWarehouseList.indices) {
             if (moneyWarehouseList[i].name == spinner1?.selectedItem.toString()) {
-                println("Hay alguno")
                 originWarehouse = moneyWarehouseList[i]
             }
         }
         for (i in moneyWarehouseList.indices) {
             if (moneyWarehouseList[i].name == spinner2?.selectedItem.toString()) {
-                println("Hay alguno 1")
                 destinationWarehouse = moneyWarehouseList[i]
             }
         }

@@ -19,6 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:drawableLeft="@drawable/layerperson"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/layerperson"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textSize="18dp" />
@@ -28,6 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:drawableLeft="@drawable/layercard"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/layercard"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textSize="18dp" />
@@ -37,6 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:drawableLeft="@drawable/layerphone"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/layerphone"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textSize="18dp" />
@@ -46,6 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:drawableLeft="@drawable/layerhouse"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/layerhouse"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textSize="18dp" />

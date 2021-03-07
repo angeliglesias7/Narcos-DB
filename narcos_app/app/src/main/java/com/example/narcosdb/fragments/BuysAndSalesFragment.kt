@@ -1,20 +1,18 @@
 package com.example.narcosdb.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.narcosdb.R
 import com.example.narcosdb.entity.Contact
 import com.example.narcosdb.entity.Drug
 import com.example.narcosdb.entity.DrugWarehouse
 import com.example.narcosdb.entity.MoneyWarehouse
-import com.example.narcosdb.viewmodel.DrugViewModel
-import com.example.narcosdb.viewmodel.DrugWarehouseViewModel
-import com.example.narcosdb.viewmodel.MoneyWarehouseViewModel
+import com.example.narcosdb.viewmodel.*
 
 
 class BuysAndSalesFragment : Fragment() {
@@ -30,9 +28,15 @@ class BuysAndSalesFragment : Fragment() {
     private var mwList = ArrayList<MoneyWarehouse>()
     private var dwList = ArrayList<DrugWarehouse>()
     private var contactList = ArrayList<Contact>()
+    private var buysAndSalesViewModel: BuysAndSalesViewModel? = null
     private var drugViewModel: DrugViewModel? = null
     private var mwViewModel: MoneyWarehouseViewModel? = null
     private var dwViewModel: DrugWarehouseViewModel? = null
+    private var contactViewModel: ContactViewModel? = null
+    private lateinit var drug: Drug
+    private lateinit var mw: MoneyWarehouse
+    private lateinit var dw: DrugWarehouse
+    private lateinit var contact: Contact
 
 
     override fun onCreateView(
@@ -55,12 +59,15 @@ class BuysAndSalesFragment : Fragment() {
         getAllMoneyWarehouses()
         dwViewModel = activity?.application?.let { DrugWarehouseViewModel(it) }
         getAllDrugWarehouses()
+        contactViewModel = activity?.application?.let { ContactViewModel(it) }
+        getAllContacts()
+        buysAndSalesViewModel = activity?.application?.let { BuysAndSalesViewModel(it) }
 
         doTransaction?.setOnClickListener {
             if (checkFields()) {
-                //getValues()
+                getValues()
                 val amount = amountDrugToBuy?.text.toString().toInt()
-                //mwViewModel?.transferMoney(originWarehouse, destinationWarehouse, amount)
+                buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
             } else {
                 val toast = Toast.makeText(
                     context,
@@ -98,6 +105,16 @@ class BuysAndSalesFragment : Fragment() {
                 dwList = list as java.util.ArrayList<DrugWarehouse>
                 loadDrugWarehouseSpinner(dwList)
             })
+    }
+
+    private fun getAllContacts() {
+        contactViewModel?.getAll()?.observe(
+            viewLifecycleOwner,
+            Observer<List<Contact>> {
+                list -> contactList = list as java.util.ArrayList<Contact>
+                loadContactSpinner(contactList)
+            }
+        )
     }
 
     private fun loadTransactionSpinner() {
@@ -166,6 +183,35 @@ class BuysAndSalesFragment : Fragment() {
         return false
     }
 
+    private fun getValues(){
+        val array = drugSpinner!!.selectedItem.toString().split(",").toTypedArray()
+        val array1 = array[1].split("%").toTypedArray()
+        println(array[0])
+        println(array1[0])
+        for (i in drugList.indices) {
+            if (drugList[i].name == array[0] && drugList[i].quality.toString() == array1[0]) {
+                drug = drugList[i]
+                break
+            }
+        }
+        for (i in mwList.indices) {
+            if (mwList[i].name == (moneyWarehouseSpinner!!.selectedItem.toString())
+            ) {
+                mw = mwList[i]
+            }
+        }
+        for (i in dwList.indices) {
+            if (dwList[i].name == (drugWarehouseSpinner!!.selectedItem.toString())
+            ) {
+                dw = dwList[i]
+            }
+        }
+        for (i in contactList.indices) {
+            if (contactList[i].surname == contactSpinner!!.selectedItem.toString()) {
+                contact = contactList[i]
+            }
+        }
+    }
 
 
 }
