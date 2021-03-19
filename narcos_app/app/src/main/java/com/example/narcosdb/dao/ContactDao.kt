@@ -6,14 +6,14 @@ import com.example.narcosdb.entity.Contact
 
 @Dao
 interface ContactDao {
-    @Insert
-    fun insert(contact: Contact?)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert(contact: Contact?) : Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(contact: Contact?)
+    fun update(contact: Contact?) : Int
 
     @Delete
-    fun delete(contact: Contact?)
+    fun delete(contact: Contact?) : Int
 
     @Query("SELECT * FROM contact")
     fun getAll(): LiveData<List<Contact>>

@@ -7,16 +7,22 @@ import java.sql.Date
 import java.util.*
 
 @Dao
-interface BuyDao {
+interface TransactionsDao {
 
     @Query("SELECT * FROM drugbuy")
     fun getBuyHistory(): LiveData<List<DrugBuy>>
+
+    @Query("SELECT * FROM drugsales")
+    fun getSalesHistory(): LiveData<List<DrugSales>>
 
     @Query("SELECT * FROM druginwarehouse WHERE drugName=:drugName AND drugQuality=:drugQuality AND warehouseName=:warehouseName ")
     fun getDrugsInWarehouse(drugName: String, drugQuality: Int, warehouseName: String): DrugInWarehouse
 
     @Insert
     fun insertBuy(drugBuy: DrugBuy)
+
+    @Insert
+    fun insertSales(drugSales: DrugSales)
 
     @Insert
     fun insertDrugInWarehouse(drugInWarehouse: DrugInWarehouse)
@@ -62,24 +68,18 @@ interface BuyDao {
             //Check if this drug exists in the warehouse
             var drugInWarehouse = getDrugsInWarehouse(drug.name, drug.quality, dw.name)
             //If exists, update the amount. Otherwise, create the drug
-            if(drugInWarehouse != null){
-                drugInWarehouse.amount += amount
+            if(drugInWarehouse != null && (drugInWarehouse.amount - amount >= 0)){
+                drugInWarehouse.amount -= amount
                 updateDrugInWarehouse(drugInWarehouse)
-            }else{
-                var newDrugInWarehouse = DrugInWarehouse(drug.name, drug.quality, amount, dw.name)
-                insertDrugInWarehouse(newDrugInWarehouse)
-            }
-            //Update money in warehouse
-            if(mw.amountMoney?.minus(amount * drug.price) >= 0){
-                mw.amountMoney = mw.amountMoney?.minus(amount * drug.price)
+                //Update money in warehouse
+                mw.amountMoney = mw.amountMoney?.plus(amount * drug.price)
                 mwDao.update(mw)
                 //Save transaction register
                 var date = Calendar.getInstance()
-                var drugBuy = DrugBuy(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
-                insertBuy(drugBuy)
-            }
-            else{
-                throw Exception("Money in warehouse < 0")
+                var drugSales = DrugSales(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
+                insertSales(drugSales)
+            }else{
+                throw Exception("No drug in this warehouse")
             }
         }catch (e: Exception){
             println(e.message)

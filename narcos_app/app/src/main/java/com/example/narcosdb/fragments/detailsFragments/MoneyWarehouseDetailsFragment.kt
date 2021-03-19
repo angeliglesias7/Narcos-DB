@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.narcosdb.R
 import com.example.narcosdb.entity.MoneyWarehouse
 import com.example.narcosdb.viewmodel.MoneyWarehouseViewModel
+import kotlinx.coroutines.runBlocking
 
 
 class MoneyWarehouseDetailsFragment : Fragment() {
@@ -62,16 +65,50 @@ class MoneyWarehouseDetailsFragment : Fragment() {
             if (checkFields()) {
                 val moneyWarehouse = getMoneyWarehouse
                 if (isNewMw == true) {
-                    mwViewModel?.insert(moneyWarehouse)
+                    runBlocking {
+                        val result = mwViewModel?.insert(moneyWarehouse)
+                        if(result.toString() == "-1"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>Error. El almacén ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>Almacén añadido con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
                 } else {
-                    mwViewModel?.update(moneyWarehouse)
+                    runBlocking {
+                        val result = mwViewModel?.update(moneyWarehouse)
+                        if(result.toString() == "-1"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>Error. No se puede actualizar el almacén</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>Almacén actualizado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
+
                 }
             }
         })
         deleteMw?.setOnClickListener(View.OnClickListener {
             if (checkFields()) {
                 val moneyWarehouse = getMoneyWarehouse
-                mwViewModel?.delete(moneyWarehouse)
+                runBlocking {
+                    val result = mwViewModel?.delete(moneyWarehouse)
+                    if(result.toString() == "-1"){
+                        Toast.makeText(context,
+                            HtmlCompat.fromHtml("<font color='red'>Error. No se puede borrar el almacén</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context,
+                            HtmlCompat.fromHtml("<font color='green'>Almacén eliminado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         })
         return v

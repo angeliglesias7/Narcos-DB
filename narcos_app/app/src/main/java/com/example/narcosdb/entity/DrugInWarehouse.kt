@@ -7,7 +7,7 @@ import androidx.room.ForeignKey
     foreignKeys = [ForeignKey(entity = Drug::class, parentColumns = arrayOf("name","quality"),
         childColumns = arrayOf("drugName","drugQuality"),
         onDelete = ForeignKey.RESTRICT, onUpdate = ForeignKey.CASCADE),
-        ForeignKey(entity = MoneyWarehouse::class, parentColumns = arrayOf("name"),
+        ForeignKey(entity = DrugWarehouse::class, parentColumns = arrayOf("name"),
             childColumns = arrayOf("warehouseName"),
             onDelete = ForeignKey.RESTRICT, onUpdate = ForeignKey.CASCADE)])
 class DrugInWarehouse(var drugName: String, var drugQuality: Int, var amount: Int, var warehouseName: String)

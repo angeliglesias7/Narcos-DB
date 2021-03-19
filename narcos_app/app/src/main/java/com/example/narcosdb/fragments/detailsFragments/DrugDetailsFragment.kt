@@ -1,6 +1,7 @@
 package com.example.narcosdb.fragments.detailsFragments
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +9,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.narcosdb.R
 import com.example.narcosdb.entity.Drug
 import com.example.narcosdb.viewmodel.DrugViewModel
+import kotlinx.coroutines.runBlocking
 
 class DrugDetailsFragment : Fragment() {
     private var frameLayout: DrawerLayout? = null
@@ -25,11 +28,6 @@ class DrugDetailsFragment : Fragment() {
     private var deleteDrug: Button? = null
     private var isNewDrug: Boolean? = null
     private var drugViewModel: DrugViewModel? = null
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -66,28 +64,52 @@ class DrugDetailsFragment : Fragment() {
             if (checkFields()) {
                 val drug = drug
                 if (isNewDrug == true) {
-                    drugViewModel?.insert(drug)
+                    runBlocking {
+                            val result = drugViewModel?.insert(drug)
+                            if(result.toString() == "-1"){
+                                Toast.makeText(context,
+                                    HtmlCompat.fromHtml("<font color='red'>Error. La droga ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                    Toast.LENGTH_LONG).show()
+                            }else{
+                                Toast.makeText(context,
+                                    HtmlCompat.fromHtml("<font color='green'>Droga añadida con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                    Toast.LENGTH_LONG).show()
+                            }
+                    }
                 } else {
-                    drugViewModel?.update(drug)
+                    runBlocking {
+                        val result = drugViewModel?.update(drug)
+                        if(result.toString() == "-1"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>Error. No se puede actualizar la droga</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>Droga actualizada con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             }
         })
         deleteDrug?.setOnClickListener(View.OnClickListener {
             if (checkFields()) {
                 val drug = drug
-                drugViewModel?.delete(drug)
+                runBlocking {
+                    val result = drugViewModel?.delete(drug)
+                    if(result.toString() == "-1"){
+                        Toast.makeText(context,
+                            HtmlCompat.fromHtml("<font color='red'>Error. No se puede borrar la droga</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context,
+                            HtmlCompat.fromHtml("<font color='green'>Droga eliminada con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         })
         return v
-    }
-
-    fun showToast(result: Boolean) {
-        val toast: Toast = if (result) {
-            Toast.makeText(context, "Droga creada correctamente", Toast.LENGTH_LONG)
-        } else {
-            Toast.makeText(context, "Error. La droga ya existe", Toast.LENGTH_LONG)
-        }
-        toast.show()
     }
 
     private fun checkFields(): Boolean {

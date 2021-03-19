@@ -107,20 +107,12 @@
                 android:layout_width="match_parent"
                 android:scrollbars="horizontal|vertical">
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white">
-
-                </ListView>
-
-                <!--<TableLayout
+                <TableLayout
                     android:id="@+id/drugsInWarehouseTable"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                </TableLayout>-->
+                </TableLayout>
 
             </HorizontalScrollView>
 

@@ -7,18 +7,17 @@ import io.reactivex.Completable
 
 @Dao
 interface DrugDao {
-    @Insert
-    fun insert(drug: Drug?)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert(drug: Drug?) : Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(drug: Drug?)
+    fun update(drug: Drug?) : Int
 
     @Delete
-    suspend fun delete(drug: Drug?)
+    fun delete(drug: Drug?) : Int
 
     @Query("SELECT * FROM drug")
     fun getAll(): LiveData<List<Drug>>
 
-    //Buy Drug
-    //Sale Drug
 }

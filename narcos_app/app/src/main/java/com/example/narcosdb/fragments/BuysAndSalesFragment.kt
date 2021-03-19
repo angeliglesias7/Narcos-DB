@@ -67,7 +67,11 @@ class BuysAndSalesFragment : Fragment() {
             if (checkFields()) {
                 getValues()
                 val amount = amountDrugToBuy?.text.toString().toInt()
-                buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
+                if(transactionType!!.selectedItem.toString() == "Compra"){
+                    buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
+                }else{
+                    buysAndSalesViewModel?.saleDrug(drug, mw, dw, contact, amount)
+                }
             } else {
                 val toast = Toast.makeText(
                     context,
@@ -186,8 +190,6 @@ class BuysAndSalesFragment : Fragment() {
     private fun getValues(){
         val array = drugSpinner!!.selectedItem.toString().split(",").toTypedArray()
         val array1 = array[1].split("%").toTypedArray()
-        println(array[0])
-        println(array1[0])
         for (i in drugList.indices) {
             if (drugList[i].name == array[0] && drugList[i].quality.toString() == array1[0]) {
                 drug = drugList[i]

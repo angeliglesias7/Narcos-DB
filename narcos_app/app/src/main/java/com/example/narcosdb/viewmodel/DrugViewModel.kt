@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.narcosdb.database.DrugDatabase
 import com.example.narcosdb.entity.Drug
 import com.example.narcosdb.repository.DrugRepo
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class DrugViewModel(application: Application): AndroidViewModel(application) {
 
@@ -15,22 +15,41 @@ class DrugViewModel(application: Application): AndroidViewModel(application) {
 
     private val allDrugs: LiveData<List<Drug>>
 
+    private var insertValue: Long = 0
+    private var updateValue: Int = 0
+    private var deleteValue: Int = 0
+
     init {
         val drugDao = DrugDatabase.getInstance(application).drugDao()
         repository = DrugRepo(drugDao)
         allDrugs = repository.allDrugs
     }
 
-    fun insert(drug: Drug) = viewModelScope.launch {
-        repository.insert(drug)
+    suspend fun insert(drug: Drug) : Long {
+        val insertCoroutine = GlobalScope.launch {
+            val result = repository.insert(drug)
+            insertValue = result
+        }
+        joinAll(insertCoroutine)
+        return insertValue
     }
 
-    fun update(drug: Drug) = viewModelScope.launch {
-        repository.update(drug)
+    suspend fun update(drug: Drug) : Int {
+        val updateCoroutine = GlobalScope.launch {
+            val result = repository.update(drug)
+            updateValue = result
+        }
+        joinAll(updateCoroutine)
+        return updateValue
     }
 
-    fun delete(drug: Drug) = viewModelScope.launch {
-        repository.delete(drug)
+    suspend fun delete(drug: Drug) : Int {
+        val deleteCoroutine = GlobalScope.launch {
+            val result = repository.delete(drug)
+            deleteValue = result
+        }
+        joinAll(deleteCoroutine)
+        return deleteValue
     }
 
     fun getAll() = repository.allDrugs

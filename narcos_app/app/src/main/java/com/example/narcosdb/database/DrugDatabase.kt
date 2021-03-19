@@ -12,8 +12,7 @@ abstract class DrugDatabase : RoomDatabase() {
     abstract fun drugDao(): DrugDao
     abstract fun moneyWarehouseDao(): MoneyWarehouseDao
     abstract fun drugWarehouseDao(): DrugWarehouseDao
-    abstract fun buyDao(): BuyDao
-    abstract fun salesDao(): SalesDao
+    abstract fun transactionsDao(): TransactionsDao
     abstract fun contactDao(): ContactDao
 
     companion object {

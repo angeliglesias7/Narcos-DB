@@ -18,10 +18,9 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
     private val salesHistory: LiveData<List<DrugSales>>
 
     init {
-        val buyDao = DrugDatabase.getInstance(application).buyDao()
-        val salesDao = DrugDatabase.getInstance(application).salesDao()
+        val transactionsDao = DrugDatabase.getInstance(application).transactionsDao()
         val mwDao = DrugDatabase.getInstance(application).moneyWarehouseDao()
-        repository = BuysAndSalesRepo(buyDao, salesDao, mwDao)
+        repository = BuysAndSalesRepo(transactionsDao, mwDao)
         buyHistory = repository.buyHistory
         salesHistory = repository.salesHistory
     }
@@ -32,5 +31,9 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
 
     fun buyDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) = viewModelScope.launch {
         repository.buyDrug(drug, mw, dw, contact, amount)
+    }
+
+    fun saleDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) = viewModelScope.launch {
+        repository.saleDrug(drug, mw, dw, contact, amount)
     }
 }
