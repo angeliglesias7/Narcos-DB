@@ -60,7 +60,6 @@ class DrugFragment : Fragment(), View.OnClickListener {
             viewLifecycleOwner,
             Observer<List<Drug>> { list -> //called every time data changes
                 drugList = list as ArrayList<Drug>
-                println("Está entrando")
                 println(list.size)
                 fillTable(drugList)
             })

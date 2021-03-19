@@ -89,7 +89,6 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
             activity!!,
             Observer<List<MoneyWarehouse>> { list -> //called every time data changes
                 moneyWarehouseList = list as java.util.ArrayList<MoneyWarehouse>
-                println("Está entrando")
                 println(list.size)
                 fillTable(moneyWarehouseList)
                 loadSpinners(moneyWarehouseList)

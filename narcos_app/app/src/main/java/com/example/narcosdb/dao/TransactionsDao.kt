@@ -32,7 +32,7 @@ interface TransactionsDao {
 
     @Transaction
     suspend fun buyDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int,
-                        mwDao: MoneyWarehouseDao) {
+                        mwDao: MoneyWarehouseDao) : Int {
         try{
             //Check if this drug exists in the warehouse
             var drugInWarehouse = getDrugsInWarehouse(drug.name, drug.quality, dw.name)
@@ -52,18 +52,21 @@ interface TransactionsDao {
                 var date = Calendar.getInstance()
                 var drugBuy = DrugBuy(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
                 insertBuy(drugBuy)
+                return 1
             }
             else{
                 throw Exception("Money in warehouse < 0")
+                return 0
             }
         }catch (e: Exception){
             println(e.message)
+            return 0
         }
     }
 
     @Transaction
     suspend fun saleDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int,
-                        mwDao: MoneyWarehouseDao) {
+                        mwDao: MoneyWarehouseDao) : Int {
         try{
             //Check if this drug exists in the warehouse
             var drugInWarehouse = getDrugsInWarehouse(drug.name, drug.quality, dw.name)
@@ -78,11 +81,14 @@ interface TransactionsDao {
                 var date = Calendar.getInstance()
                 var drugSales = DrugSales(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
                 insertSales(drugSales)
+                return 1
             }else{
                 throw Exception("No drug in this warehouse")
+                return 0
             }
         }catch (e: Exception){
             println(e.message)
+            return 0
         }
     }
 

@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.narcosdb.database.*
 import com.example.narcosdb.entity.*
 import com.example.narcosdb.repository.BuysAndSalesRepo
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 
 class BuysAndSalesViewModel(application: Application) : AndroidViewModel(application) {
@@ -16,6 +18,9 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
 
     private val buyHistory: LiveData<List<DrugBuy>>
     private val salesHistory: LiveData<List<DrugSales>>
+
+    private var buyValue: Int = 0
+    private var saleValue: Int = 0
 
     init {
         val transactionsDao = DrugDatabase.getInstance(application).transactionsDao()
@@ -29,11 +34,21 @@ class BuysAndSalesViewModel(application: Application) : AndroidViewModel(applica
 
     fun getSalesHistory() = repository.salesHistory
 
-    fun buyDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) = viewModelScope.launch {
-        repository.buyDrug(drug, mw, dw, contact, amount)
+    suspend fun buyDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) : Int {
+        val buyCoroutine = GlobalScope.launch {
+            val result = repository.buyDrug(drug, mw, dw, contact, amount)
+            buyValue = result
+        }
+        joinAll(buyCoroutine)
+        return buyValue
     }
 
-    fun saleDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) = viewModelScope.launch {
-        repository.saleDrug(drug, mw, dw, contact, amount)
+    suspend fun saleDrug(drug: Drug, mw: MoneyWarehouse, dw: DrugWarehouse, contact: Contact, amount: Int) : Int {
+        val saleCoroutine = GlobalScope.launch {
+            val result = repository.saleDrug(drug, mw, dw, contact, amount)
+            saleValue = result
+        }
+        joinAll(saleCoroutine)
+        return saleValue
     }
 }

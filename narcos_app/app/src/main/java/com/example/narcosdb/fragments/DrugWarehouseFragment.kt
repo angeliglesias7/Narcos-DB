@@ -60,7 +60,6 @@ class DrugWarehouseFragment : Fragment(), View.OnClickListener {
             viewLifecycleOwner,
             Observer<List<DrugWarehouse>> { list -> //called every time data changes
                 drugWarehouseList = list as java.util.ArrayList<DrugWarehouse>
-                println("Está entrando")
                 println(list.size)
                 fillTable(drugWarehouseList)
             })

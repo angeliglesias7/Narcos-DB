@@ -66,26 +66,26 @@ class DrugDetailsFragment : Fragment() {
                 if (isNewDrug == true) {
                     runBlocking {
                             val result = drugViewModel?.insert(drug)
-                            if(result.toString() == "-1"){
-                                Toast.makeText(context,
-                                    HtmlCompat.fromHtml("<font color='red'>Error. La droga ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
-                                    Toast.LENGTH_LONG).show()
-                            }else{
-                                Toast.makeText(context,
-                                    HtmlCompat.fromHtml("<font color='green'>Droga añadida con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
-                                    Toast.LENGTH_LONG).show()
-                            }
+                        if(result.toString() == "-1"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
                     }
                 } else {
                     runBlocking {
                         val result = drugViewModel?.update(drug)
                         if(result.toString() == "-1"){
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>Error. No se puede actualizar la droga</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>Droga actualizada con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -99,11 +99,11 @@ class DrugDetailsFragment : Fragment() {
                     val result = drugViewModel?.delete(drug)
                     if(result.toString() == "-1"){
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>Error. No se puede borrar la droga</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>Droga eliminada con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }

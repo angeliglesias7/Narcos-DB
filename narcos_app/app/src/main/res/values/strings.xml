@@ -32,19 +32,35 @@
     <string name="login_error_result">El usuario o la contraseña no son válidos</string>
     <string name="fields_error">Rellene correctamente los campos</string>
     <string name="fields_transfer_error">Error al seleccionar el almacén o la cantidad de dinero</string>
+
+    <string name="buy">Compra</string>
+    <string name="sale">Venta</string>
     <string name="successful_buy">Compra realizada correctamente</string>
     <string name="successful_sale">Venta realizada correctamente</string>
-    <string name="successful_transfer">Transferencia realizada correctamente</string>
+    <string name="error_buy">Error al realizar la compra</string>
+    <string name="error_sale">Error al realizar la venta</string>
+
+    <string name="create_drug">Droga añadida con éxito</string>
+    <string name="update_drug">Droga actualizada con éxito</string>
+    <string name="delete_drug">Droga eliminada con éxito</string>
     <string name="create_drug_error">Error al crear la droga</string>
     <string name="update_drug_error">Error al actualizar la droga</string>
     <string name="delete_drug_error">Error al eliminar la droga</string>
+
+    <string name="create_mw">Almacén añadido con éxito</string>
+    <string name="update_mw">Almacén actualizado con éxito</string>
+    <string name="delete_mw">Almacén eliminado con éxito</string>
     <string name="create_mw_error">Error al crear el almacén</string>
     <string name="update_mw_error">Error al actualizar el almacén</string>
     <string name="delete_mw_error">Error al eliminar el almacén</string>
+
+    <string name="create_contact">Contacto añadido con éxito</string>
+    <string name="update_contact">Contacto actualizado con éxito</string>
+    <string name="delete_contact">Contacto eliminado con éxito</string>
     <string name="create_contact_error">Error al crear el contacto</string>
     <string name="update_contact_error">Error al actualizar el contacto</string>
     <string name="delete_contact_error">Error al eliminar el contacto</string>
-    <string name="destroy_mw_error">Error al destruír el almacén</string>
+
     <string name="internet_error">Por favor, conéctese a internet para obtener la información</string>
 
 

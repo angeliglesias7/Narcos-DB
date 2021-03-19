@@ -69,11 +69,11 @@ class ContactDetailsFragment : Fragment() {
                         val result = contactViewModel?.insert(contact)
                         if(result.toString() == "-1"){
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>Error. El contacto ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_contact_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>Contacto añadido con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_contact)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -83,11 +83,11 @@ class ContactDetailsFragment : Fragment() {
                         val result = contactViewModel?.update(contact)
                         if(result.toString() == "-1"){
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>Error. El contacto ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_contact_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>Contacto actualizado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_contact)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -101,11 +101,11 @@ class ContactDetailsFragment : Fragment() {
                     val result = contactViewModel?.delete(contact)
                     if(result.toString() == "-1"){
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>Error. No se puede borrar el contacto</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_contact_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>Contacto eliminado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_contact)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }

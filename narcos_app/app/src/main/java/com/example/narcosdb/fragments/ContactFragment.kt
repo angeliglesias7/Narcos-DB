@@ -46,20 +46,18 @@ class ContactFragment : Fragment(), AdapterView.OnItemClickListener {
             transaction?.commit()
         }
 
-        listView.setOnItemClickListener { parent, view, position, id ->
+        listView.setOnItemClickListener { _, _, position, _ ->
             val contact = contactAdapter!!.getItem(position) as Contact
-            if (contact != null) {
-                val bundle = Bundle()
-                bundle.putString("surname", contact.surname)
-                bundle.putString("passport", contact.passport)
-                bundle.putString("phone", contact.phone)
-                bundle.putString("address", contact.address)
-                val contactDetailsFragment = ContactDetailsFragment()
-                contactDetailsFragment.arguments = bundle
-                activity!!.supportFragmentManager.beginTransaction()
-                    .replace(R.id.framelayout_id, contactDetailsFragment)
-                    .addToBackStack("newContact").commit()
-            }
+            val bundle = Bundle()
+            bundle.putString("surname", contact.surname)
+            bundle.putString("passport", contact.passport)
+            bundle.putString("phone", contact.phone)
+            bundle.putString("address", contact.address)
+            val contactDetailsFragment = ContactDetailsFragment()
+            contactDetailsFragment.arguments = bundle
+            activity!!.supportFragmentManager.beginTransaction()
+                .replace(R.id.framelayout_id, contactDetailsFragment)
+                .addToBackStack("newContact").commit()
         }
 
         return v
@@ -68,17 +66,16 @@ class ContactFragment : Fragment(), AdapterView.OnItemClickListener {
     fun onItemSelected() {
         val list = contactAdapter!!.getItems()
         contactAdapter = ContactAdapter(context, list)
-        listView!!.adapter = contactAdapter
+        listView.adapter = contactAdapter
     }
 
-    fun onNothingSelected(parent: AdapterView<*>?) {}
+    fun onNothingSelected() {}
 
     private fun getAll() {
         contactViewModel?.getAll()?.observe(
             viewLifecycleOwner,
             Observer<List<Contact>> { list -> //called every time data changes
                 contactList = list as java.util.ArrayList<Contact>
-                println("Está entrando")
                 println(list.size)
                 contactAdapter = ContactAdapter(this.context, contactList)
                 listView.adapter = contactAdapter

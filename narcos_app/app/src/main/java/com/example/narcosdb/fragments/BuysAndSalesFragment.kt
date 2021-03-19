@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.narcosdb.R
@@ -13,6 +14,7 @@ import com.example.narcosdb.entity.Drug
 import com.example.narcosdb.entity.DrugWarehouse
 import com.example.narcosdb.entity.MoneyWarehouse
 import com.example.narcosdb.viewmodel.*
+import kotlinx.coroutines.runBlocking
 
 
 class BuysAndSalesFragment : Fragment() {
@@ -68,9 +70,31 @@ class BuysAndSalesFragment : Fragment() {
                 getValues()
                 val amount = amountDrugToBuy?.text.toString().toInt()
                 if(transactionType!!.selectedItem.toString() == "Compra"){
-                    buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
+                    runBlocking {
+                        val result = buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
+                        if(result.toString() == "0"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.error_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.successful_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }else{
-                    buysAndSalesViewModel?.saleDrug(drug, mw, dw, contact, amount)
+                    runBlocking {
+                        val result = buysAndSalesViewModel?.saleDrug(drug, mw, dw, contact, amount)
+                        if(result.toString() == "0"){
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.error_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(context,
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.successful_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             } else {
                 val toast = Toast.makeText(
@@ -123,8 +147,8 @@ class BuysAndSalesFragment : Fragment() {
 
     private fun loadTransactionSpinner() {
         val nameList = arrayListOf<String>()
-        nameList.add("Compra")
-        nameList.add("Venta")
+        nameList.add(getString(R.string.buy))
+        nameList.add(getString(R.string.sale))
         val adapter: ArrayAdapter<String> =
             ArrayAdapter(activity!!.applicationContext, R.layout.spinner_item, nameList)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)

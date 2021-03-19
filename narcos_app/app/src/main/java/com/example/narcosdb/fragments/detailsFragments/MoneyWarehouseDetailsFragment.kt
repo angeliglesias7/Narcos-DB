@@ -69,11 +69,11 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                         val result = mwViewModel?.insert(moneyWarehouse)
                         if(result.toString() == "-1"){
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>Error. El almacén ya existe</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>Almacén añadido con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -82,11 +82,11 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                         val result = mwViewModel?.update(moneyWarehouse)
                         if(result.toString() == "-1"){
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>Error. No se puede actualizar el almacén</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
                             Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>Almacén actualizado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -101,11 +101,11 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                     val result = mwViewModel?.delete(moneyWarehouse)
                     if(result.toString() == "-1"){
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>Error. No se puede borrar el almacén</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
                         Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>Almacén eliminado con éxito</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }
