@@ -14,8 +14,8 @@ class LoanViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository: LoanRepo
 
-    private val allLoansMade: LiveData<List<Loan>>
-    private val allLoansToPay: LiveData<List<Loan>>
+    private val allMoneyReceived: LiveData<Float>
+    private val allMoneyPaid: LiveData<Float>
 
     private var insertValue: Long = 0
     private var updateValue: Int = 0
@@ -25,8 +25,8 @@ class LoanViewModel(application: Application): AndroidViewModel(application) {
         val loanDao = DrugDatabase.getInstance(application).loanDao()
         val mwDao = DrugDatabase.getInstance(application).moneyWarehouseDao()
         repository = LoanRepo(loanDao, mwDao)
-        allLoansMade = repository.allLoansMade
-        allLoansToPay = repository.allLoansToPay
+        allMoneyReceived = repository.allMoneyPaid
+        allMoneyPaid = repository.allMoneyPaid
     }
 
     suspend fun insertLoan(loan: Loan) : Long {
@@ -47,9 +47,9 @@ class LoanViewModel(application: Application): AndroidViewModel(application) {
         return updateValue
     }
 
-    fun getAllLoansMade() = repository.allLoansMade
+    fun getAllMoneyReceived() = repository.allMoneyReceived
 
-    fun getAllLoansToPay() = repository.allLoansToPay
+    fun getAllMoneyPaid() = repository.allMoneyPaid
 
     suspend fun newLoanMade(loan: Loan) : Int {
         val newLoanCoroutine = GlobalScope.launch {

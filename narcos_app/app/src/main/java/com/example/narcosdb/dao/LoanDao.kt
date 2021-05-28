@@ -15,11 +15,17 @@ interface LoanDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateLoan(loan: Loan?): Int
 
-    @Query("SELECT * FROM loan WHERE type = 1")
-    fun getAllLoansMade(): LiveData<List<Loan>>
+    @Query("SELECT sum(totalAmount) FROM loan WHERE type = 1")
+    fun getAllMoneyReceived(): LiveData<Float>
 
-    @Query("SELECT * FROM loan WHERE type = 2")
-    fun getAllLoansToPay(): LiveData<List<Loan>>
+    @Query("SELECT sum(totalAmount) FROM loan WHERE type = 2")
+    fun getAllMoneyPaid(): LiveData<Float>
+
+    @Query("SELECT sum(totalAmount) FROM loan WHERE type = 1 AND completed = 0")
+    fun getPendingMoneyToReceive(): LiveData<Float>
+
+    @Query("SELECT sum(totalAmount) FROM loan WHERE type = 2 AND completed = 0")
+    fun getPendingMoneyToPay(): LiveData<Float>
 
     @Query("SELECT contact FROM loan WHERE type = 1 GROUP BY contact LIMIT 1")
     fun getContactMoreLoansMade(): String

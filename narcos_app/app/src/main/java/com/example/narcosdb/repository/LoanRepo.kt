@@ -10,8 +10,8 @@ class LoanRepo(
     private val loanDao: LoanDao,
     private val mwDao: MoneyWarehouseDao
 ) {
-    val allLoansMade: LiveData<List<Loan>> = loanDao.getAllLoansMade()
-    val allLoansToPay: LiveData<List<Loan>> = loanDao.getAllLoansToPay()
+    val allMoneyReceived: LiveData<Float> = loanDao.getAllMoneyReceived()
+    val allMoneyPaid: LiveData<Float> = loanDao.getAllMoneyPaid()
     private var insertValue: Long = 0
     private var updateValue: Int = 0
     private var newLoanValue: Int = 0
