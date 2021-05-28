@@ -7,75 +7,99 @@
     android:background="@color/background"
     tools:context=".fragments.HistoryFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Historial de compra"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:textSize="15dp">
+            <LinearLayout
+                android:layout_weight=".5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
 
-            </TextView>
-
-            <HorizontalScrollView
-                android:id="@+id/activity_horizontalView1"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:scrollbars="horizontal|vertical">
-
-                <TableLayout
-                    android:id="@+id/buyHistoryTable"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:text="Historial de compra"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp">
 
-                </TableLayout>
+                </TextView>
 
-            </HorizontalScrollView>
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scrollbars="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Historial de venta"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:gravity="center"
-                android:layout_marginTop="40dp"
-                android:textSize="15dp">
+                    <HorizontalScrollView
+                        android:id="@+id/activity_horizontalView1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:scrollbars="horizontal|vertical">
 
-            </TextView>
+                        <TableLayout
+                            android:id="@+id/buyHistoryTable"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
 
-            <HorizontalScrollView
-                android:id="@+id/activity_horizontalView2"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:scrollbars="horizontal|vertical">
+                        </TableLayout>
 
-                <TableLayout
-                    android:id="@+id/salesHistoryTable"
+                    </HorizontalScrollView>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight=".5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:text="Historial de venta"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp">
 
-                </TableLayout>
+                </TextView>
 
-            </HorizontalScrollView>
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scrollbars="vertical">
 
+                    <HorizontalScrollView
+                        android:id="@+id/activity_horizontalView2"
+                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:scrollbars="horizontal|vertical">
+
+                        <TableLayout
+                            android:id="@+id/salesHistoryTable"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp">
+
+                        </TableLayout>
+
+                    </HorizontalScrollView>
+
+                </ScrollView>
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </ScrollView>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

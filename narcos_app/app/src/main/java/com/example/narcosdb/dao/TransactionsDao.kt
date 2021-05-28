@@ -45,12 +45,13 @@ interface TransactionsDao {
                 insertDrugInWarehouse(newDrugInWarehouse)
             }
             //Update money in warehouse
-            if(mw.amountMoney?.minus(amount * drug.price) >= 0){
-                mw.amountMoney = mw.amountMoney?.minus(amount * drug.price)
+            if(mw.amountMoney.minus(amount * drug.price) >= 0){
+                mw.amountMoney = mw.amountMoney.minus(amount * drug.price)
                 mwDao.update(mw)
                 //Save transaction register
                 var date = Calendar.getInstance()
-                var drugBuy = DrugBuy(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
+                var amountMoney: Double = amount * drug.price
+                var drugBuy = DrugBuy(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname, amountMoney)
                 insertBuy(drugBuy)
                 return 1
             }
@@ -75,11 +76,12 @@ interface TransactionsDao {
                 drugInWarehouse.amount -= amount
                 updateDrugInWarehouse(drugInWarehouse)
                 //Update money in warehouse
-                mw.amountMoney = mw.amountMoney?.plus(amount * drug.price)
+                mw.amountMoney = mw.amountMoney.plus(amount * drug.price)
                 mwDao.update(mw)
                 //Save transaction register
                 var date = Calendar.getInstance()
-                var drugSales = DrugSales(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname)
+                var amountMoney: Double = amount * drug.price
+                var drugSales = DrugSales(Date(date.timeInMillis).toString(),drug.name, drug.quality, amount, contact.surname, amountMoney)
                 insertSales(drugSales)
                 return 1
             }else{

@@ -1,9 +1,11 @@
 package com.example.narcosdb.fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,11 +29,14 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
     private var originWarehouse: MoneyWarehouse = MoneyWarehouse()
     private var destinationWarehouse: MoneyWarehouse = MoneyWarehouse()
     private var mwViewModel: MoneyWarehouseViewModel? = null
+    private lateinit var appContext : Context
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        appContext = context!!.applicationContext
+
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_money_warehouse, container, false)
 
@@ -66,7 +71,7 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
                 mwViewModel?.transferMoney(originWarehouse, destinationWarehouse, amount)
             } else {
                 val toast = Toast.makeText(
-                    context,
+                    appContext,
                     resources.getString(R.string.fields_transfer_error),
                     Toast.LENGTH_LONG
                 )
@@ -126,26 +131,26 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initializeTable() {
-        val tr = TableRow(context)
-        val tv0 = TextView(context)
+        val tr = TableRow(appContext)
+        val tv0 = TextView(appContext)
         tv0.text = "Nombre"
         tv0.setTextColor(Color.BLACK)
         tv0.gravity = Gravity.CENTER
         tv0.setPadding(20, 0, 20, 0)
         tr.addView(tv0)
-        val tv1 = TextView(context)
+        val tv1 = TextView(appContext)
         tv1.text = "Lugar"
         tv1.setTextColor(Color.BLACK)
         tv1.gravity = Gravity.CENTER
         tv1.setPadding(20, 0, 20, 0)
         tr.addView(tv1)
-        val tv2 = TextView(context)
+        val tv2 = TextView(appContext)
         tv2.text = "Metros cuadrados"
         tv2.setTextColor(Color.BLACK)
         tv2.gravity = Gravity.CENTER
         tv2.setPadding(20, 0, 20, 0)
         tr.addView(tv2)
-        val tv3 = TextView(context)
+        val tv3 = TextView(appContext)
         tv3.text = "Cantidad de dinero (€)"
         tv3.setTextColor(Color.BLACK)
         //tv3.setGravity(Gravity.CENTER);
@@ -169,26 +174,26 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
 
     private fun fillTable(drugList: java.util.ArrayList<MoneyWarehouse>) {
         for (i in drugList.indices) {
-            val tr = TableRow(context)
-            val t1v = TextView(context)
+            val tr = TableRow(appContext)
+            val t1v = TextView(appContext)
             t1v.text = drugList[i].name
             t1v.setTextColor(Color.BLACK)
             t1v.gravity = Gravity.CENTER
             t1v.setPadding(20, 0, 20, 0)
             tr.addView(t1v)
-            val t2v = TextView(context)
+            val t2v = TextView(appContext)
             t2v.text = drugList[i].place.toString()
             t2v.setTextColor(Color.BLACK)
             t2v.gravity = Gravity.CENTER
             t2v.setPadding(20, 0, 20, 0)
             tr.addView(t2v)
-            val t3v = TextView(context)
+            val t3v = TextView(appContext)
             t3v.text = drugList[i].m2.toString()
             t3v.setTextColor(Color.BLACK)
             t3v.gravity = Gravity.CENTER
             t3v.setPadding(20, 0, 20, 0)
             tr.addView(t3v)
-            val t4v = TextView(context)
+            val t4v = TextView(appContext)
             t4v.text = drugList[i].amountMoney.toString()
             t4v.setTextColor(Color.BLACK)
             //t4v.setGravity(Gravity.CENTER);
@@ -219,7 +224,7 @@ class MoneyWarehouseFragment : Fragment(), View.OnClickListener {
             nameList.add(moneyWarehouseList[i].name)
         }
         val adapter: ArrayAdapter<String> =
-            ArrayAdapter(activity!!.applicationContext, R.layout.spinner_item, nameList)
+            ArrayAdapter(appContext, R.layout.spinner_item, nameList)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner1!!.adapter = adapter
         spinner2!!.adapter = adapter

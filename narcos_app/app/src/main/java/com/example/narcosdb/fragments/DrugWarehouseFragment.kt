@@ -83,20 +83,20 @@ class DrugWarehouseFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initializeTable() {
-        val tr = TableRow(context)
-        val tv0 = TextView(context)
+        val tr = TableRow(activity!!.applicationContext)
+        val tv0 = TextView(activity!!.applicationContext)
         tv0.text = "Nombre"
         tv0.setTextColor(Color.BLACK)
         tv0.gravity = Gravity.CENTER
         tv0.setPadding(20, 0, 20, 0)
         tr.addView(tv0)
-        val tv1 = TextView(context)
+        val tv1 = TextView(activity!!.applicationContext)
         tv1.text = "Lugar"
         tv1.setTextColor(Color.BLACK)
         tv1.gravity = Gravity.CENTER
         tv1.setPadding(20, 0, 20, 0)
         tr.addView(tv1)
-        val tv2 = TextView(context)
+        val tv2 = TextView(activity!!.applicationContext)
         tv2.text = "Metros cuadrados"
         tv2.setTextColor(Color.BLACK)
         tv2.gravity = Gravity.CENTER
@@ -120,20 +120,20 @@ class DrugWarehouseFragment : Fragment(), View.OnClickListener {
 
     private fun fillTable(drugList: java.util.ArrayList<DrugWarehouse>) {
         for (i in drugList.indices) {
-            val tr = TableRow(context)
-            val t1v = TextView(context)
+            val tr = TableRow(activity!!.applicationContext)
+            val t1v = TextView(activity!!.applicationContext)
             t1v.text = drugList[i].name
             t1v.setTextColor(Color.BLACK)
             t1v.gravity = Gravity.CENTER
             t1v.setPadding(20, 0, 20, 0)
             tr.addView(t1v)
-            val t2v = TextView(context)
+            val t2v = TextView(activity!!.applicationContext)
             t2v.text = drugList[i].place.toString()
             t2v.setTextColor(Color.BLACK)
             t2v.gravity = Gravity.CENTER
             t2v.setPadding(20, 0, 20, 0)
             tr.addView(t2v)
-            val t3v = TextView(context)
+            val t3v = TextView(activity!!.applicationContext)
             t3v.text = drugList[i].m2.toString()
             t3v.setTextColor(Color.BLACK)
             t3v.gravity = Gravity.CENTER

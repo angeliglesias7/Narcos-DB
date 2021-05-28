@@ -13,6 +13,7 @@ class DrugBuy {
     var quality: Int
     var quantity: Int
     var contact: String
+    var amountMoney: Double = 0.0
 
     @Ignore
     constructor(id: Int, date: String, drugName: String, quality: Int, quantity: Int, contact: String) {
@@ -24,12 +25,13 @@ class DrugBuy {
         this.contact = contact
     }
 
-    constructor(date: String, drugName: String, quality: Int, quantity: Int, contact: String) {
+    constructor(date: String, drugName: String, quality: Int, quantity: Int, contact: String, amountMoney: Double) {
         this.date = date
         this.drugName = drugName
         this.quality = quality
         this.quantity = quantity
         this.contact = contact
+        this.amountMoney = amountMoney
     }
 
 }

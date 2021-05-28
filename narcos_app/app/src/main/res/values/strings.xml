@@ -23,7 +23,7 @@
     <string name="menu_history">Historial</string>
     <string name="menu_policeman">Policías</string>
     <string name="menu_loans">Préstamos</string>
-    <string name="menu_buys">Compras</string>
+    <string name="menu_buys">Compras y ventas</string>
     <string name="menu_close_session">Cerrar sesión</string>
     <string name="string_close_session">Está seguro que quiere cerrar la sesión actual?</string>
 
@@ -60,6 +60,11 @@
     <string name="create_contact_error">Error al crear el contacto</string>
     <string name="update_contact_error">Error al actualizar el contacto</string>
     <string name="delete_contact_error">Error al eliminar el contacto</string>
+
+    <string name="create_loan">Préstamo realizado con éxito</string>
+    <string name="update_loan">Préstamo actualizado con éxito</string>
+    <string name="create_loan_error">Error al realizar el préstamo</string>
+    <string name="update_loan_error">Error al actualizar el préstamo</string>
 
     <string name="internet_error">Por favor, conéctese a internet para obtener la información</string>
 

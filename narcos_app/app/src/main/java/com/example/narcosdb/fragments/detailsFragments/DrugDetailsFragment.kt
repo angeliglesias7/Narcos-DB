@@ -67,12 +67,12 @@ class DrugDetailsFragment : Fragment() {
                     runBlocking {
                             val result = drugViewModel?.insert(drug)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.create_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.create_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -80,12 +80,12 @@ class DrugDetailsFragment : Fragment() {
                     runBlocking {
                         val result = drugViewModel?.update(drug)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.update_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.update_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -98,12 +98,12 @@ class DrugDetailsFragment : Fragment() {
                 runBlocking {
                     val result = drugViewModel?.delete(drug)
                     if(result.toString() == "-1"){
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.delete_drug_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.delete_drug)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }

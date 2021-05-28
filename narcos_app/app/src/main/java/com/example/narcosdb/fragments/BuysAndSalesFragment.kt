@@ -73,12 +73,12 @@ class BuysAndSalesFragment : Fragment() {
                     runBlocking {
                         val result = buysAndSalesViewModel?.buyDrug(drug, mw, dw, contact, amount)
                         if(result.toString() == "0"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.error_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.error_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.successful_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.successful_buy)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -86,19 +86,19 @@ class BuysAndSalesFragment : Fragment() {
                     runBlocking {
                         val result = buysAndSalesViewModel?.saleDrug(drug, mw, dw, contact, amount)
                         if(result.toString() == "0"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.error_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.error_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.successful_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.successful_sale)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
                 }
             } else {
                 val toast = Toast.makeText(
-                    context,
+                    activity!!.applicationContext,
                     resources.getString(R.string.fields_transfer_error),
                     Toast.LENGTH_LONG
                 )
@@ -205,7 +205,9 @@ class BuysAndSalesFragment : Fragment() {
     }
 
     private fun checkFields() : Boolean{
-        if (amountDrugToBuy!!.text.toString().toFloat() > 0 ) {
+        if (drugSpinner?.selectedItem != null && contactSpinner?.selectedItem != null &&
+            drugWarehouseSpinner?.selectedItem != null && moneyWarehouseSpinner?.selectedItem != null &&
+            amountDrugToBuy?.text!!.isNotEmpty()) {
             return true
         }
         return false

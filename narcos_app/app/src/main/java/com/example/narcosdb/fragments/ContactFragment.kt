@@ -65,7 +65,7 @@ class ContactFragment : Fragment(), AdapterView.OnItemClickListener {
 
     fun onItemSelected() {
         val list = contactAdapter!!.getItems()
-        contactAdapter = ContactAdapter(context, list)
+        contactAdapter = ContactAdapter(activity!!.applicationContext, list)
         listView.adapter = contactAdapter
     }
 
@@ -77,7 +77,7 @@ class ContactFragment : Fragment(), AdapterView.OnItemClickListener {
             Observer<List<Contact>> { list -> //called every time data changes
                 contactList = list as java.util.ArrayList<Contact>
                 println(list.size)
-                contactAdapter = ContactAdapter(this.context, contactList)
+                contactAdapter = ContactAdapter(this.activity!!.applicationContext, contactList)
                 listView.adapter = contactAdapter
             })
     }

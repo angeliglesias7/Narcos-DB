@@ -85,26 +85,26 @@ class DrugFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initializeTable() {
-        val tr = TableRow(context)
-        val tv0 = TextView(context)
+        val tr = TableRow(activity!!.applicationContext)
+        val tv0 = TextView(activity!!.applicationContext)
         tv0.text = "Nombre"
         tv0.setTextColor(Color.BLACK)
         tv0.gravity = Gravity.CENTER
         tv0.setPadding(20, 0, 20, 0)
         tr.addView(tv0)
-        val tv1 = TextView(context)
+        val tv1 = TextView(activity!!.applicationContext)
         tv1.text = "Calidad (%)"
         tv1.setTextColor(Color.BLACK)
         tv1.gravity = Gravity.CENTER
         tv1.setPadding(20, 0, 20, 0)
         tr.addView(tv1)
-        val tv2 = TextView(context)
+        val tv2 = TextView(activity!!.applicationContext)
         tv2.text = "Precio (€/kg)"
         tv2.setTextColor(Color.BLACK)
         tv2.gravity = Gravity.CENTER
         tv2.setPadding(20, 0, 20, 0)
         tr.addView(tv2)
-        val tv3 = TextView(context)
+        val tv3 = TextView(activity!!.applicationContext)
         tv3.text = "Descripción"
         tv3.setTextColor(Color.BLACK)
         //tv3.setGravity(Gravity.CENTER);
@@ -128,26 +128,26 @@ class DrugFragment : Fragment(), View.OnClickListener {
 
     private fun fillTable(drugList: ArrayList<Drug>) {
         for (i in drugList.indices) {
-            val tr = TableRow(context)
-            val t1v = TextView(context)
+            val tr = TableRow(activity!!.applicationContext)
+            val t1v = TextView(activity!!.applicationContext)
             t1v.text = drugList[i].name
             t1v.setTextColor(Color.BLACK)
             t1v.gravity = Gravity.CENTER
             t1v.setPadding(20, 0, 20, 0)
             tr.addView(t1v)
-            val t2v = TextView(context)
+            val t2v = TextView(activity!!.applicationContext)
             t2v.text = drugList[i].quality.toString()
             t2v.setTextColor(Color.BLACK)
             t2v.gravity = Gravity.CENTER
             t2v.setPadding(20, 0, 20, 0)
             tr.addView(t2v)
-            val t3v = TextView(context)
+            val t3v = TextView(activity!!.applicationContext)
             t3v.text = drugList[i].price.toString()
             t3v.setTextColor(Color.BLACK)
             t3v.gravity = Gravity.CENTER
             t3v.setPadding(20, 0, 20, 0)
             tr.addView(t3v)
-            val t4v = TextView(context)
+            val t4v = TextView(activity!!.applicationContext)
             t4v.text = drugList[i].description
             t4v.setTextColor(Color.BLACK)
             //t4v.setGravity(Gravity.CENTER);

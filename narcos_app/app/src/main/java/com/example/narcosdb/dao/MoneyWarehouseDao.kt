@@ -19,6 +19,9 @@ interface MoneyWarehouseDao {
     @Delete
     fun delete(moneyWarehouse: MoneyWarehouse?): Int
 
+    @Query("SELECT * FROM moneywarehouse WHERE name=:warehouseName ")
+    fun getMoneyWarehouse(warehouseName: String): MoneyWarehouse
+
     @Transaction
     fun transferMoney(origin: MoneyWarehouse, destination: MoneyWarehouse, amount: Int) {
         if (origin.amountMoney - amount > 0) {

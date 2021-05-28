@@ -3,12 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".fragments.LoansFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <android.widget.Button
+                android:id="@+id/lendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_rounded"
+                android:text="Prestar dinero"
+                android:textColor="@color/white">
+
+            </android.widget.Button>
+
+            <android.widget.Button
+                android:id="@+id/returnMoneyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_rounded"
+                android:text="Devolver dinero"
+                android:textColor="@color/white">
+
+            </android.widget.Button>
+
+            <android.widget.Button
+                android:id="@+id/loanHistoryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_rounded"
+                android:text="Ver historial de préstamos"
+                android:textColor="@color/white">
+
+            </android.widget.Button>
+
+            <android.widget.Button
+                android:id="@+id/loanStatsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_rounded"
+                android:text="Ver estadísticas"
+                android:textColor="@color/white">
+
+            </android.widget.Button>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>

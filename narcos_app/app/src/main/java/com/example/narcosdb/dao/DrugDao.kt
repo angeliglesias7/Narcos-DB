@@ -14,7 +14,7 @@ interface DrugDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(drug: Drug?) : Int
 
-    @Delete
+    @Delete()
     fun delete(drug: Drug?) : Int
 
     @Query("SELECT * FROM drug")

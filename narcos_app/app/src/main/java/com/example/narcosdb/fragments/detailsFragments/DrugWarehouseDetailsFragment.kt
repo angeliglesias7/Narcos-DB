@@ -72,12 +72,12 @@ class DrugWarehouseDetailsFragment : Fragment() {
                     runBlocking {
                         val result = dwViewModel?.insert(drugWarehouse)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.create_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.create_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -86,12 +86,12 @@ class DrugWarehouseDetailsFragment : Fragment() {
                     runBlocking {
                         val result = dwViewModel?.update(drugWarehouse)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.update_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.update_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -104,12 +104,12 @@ class DrugWarehouseDetailsFragment : Fragment() {
                 runBlocking {
                     val result = dwViewModel?.delete(drugWarehouse)
                     if(result.toString() == "-1"){
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.delete_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.delete_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }
@@ -137,26 +137,26 @@ class DrugWarehouseDetailsFragment : Fragment() {
     }
 
     private fun initializeTable() {
-        val tr = TableRow(context)
-        val tv0 = TextView(context)
+        val tr = TableRow(activity!!.applicationContext)
+        val tv0 = TextView(activity!!.applicationContext)
         tv0.text = "Nombre"
         tv0.setTextColor(Color.BLACK)
         tv0.gravity = Gravity.CENTER
         tv0.setPadding(20, 0, 20, 0)
         tr.addView(tv0)
-        val tv1 = TextView(context)
+        val tv1 = TextView(activity!!.applicationContext)
         tv1.text = "Calidad (%)"
         tv1.setTextColor(Color.BLACK)
         tv1.gravity = Gravity.CENTER
         tv1.setPadding(20, 0, 20, 0)
         tr.addView(tv1)
-        val tv2 = TextView(context)
+        val tv2 = TextView(activity!!.applicationContext)
         tv2.text = "Precio (€/kg)"
         tv2.setTextColor(Color.BLACK)
         tv2.gravity = Gravity.CENTER
         tv2.setPadding(20, 0, 20, 0)
         tr.addView(tv2)
-        val tv3 = TextView(context)
+        val tv3 = TextView(activity!!.applicationContext)
         tv3.text = "Cantidad (kg)"
         tv3.setTextColor(Color.BLACK)
         tv3.gravity = Gravity.CENTER
@@ -179,26 +179,26 @@ class DrugWarehouseDetailsFragment : Fragment() {
 
     private fun fillTable(drugList: java.util.ArrayList<DrugInWarehousePOJO>) {
         for (i in drugList.indices) {
-            val tr = TableRow(context)
-            val t1v = TextView(context)
+            val tr = TableRow(activity!!.applicationContext)
+            val t1v = TextView(activity!!.applicationContext)
             t1v.text = drugList[i].drugName
             t1v.setTextColor(Color.BLACK)
             t1v.gravity = Gravity.CENTER
             t1v.setPadding(20, 0, 20, 0)
             tr.addView(t1v)
-            val t2v = TextView(context)
+            val t2v = TextView(activity!!.applicationContext)
             t2v.text = drugList[i].drugQuality.toString()
             t2v.setTextColor(Color.BLACK)
             t2v.gravity = Gravity.CENTER
             t2v.setPadding(20, 0, 20, 0)
             tr.addView(t2v)
-            val t3v = TextView(context)
+            val t3v = TextView(activity!!.applicationContext)
             t3v.text = drugList[i].price.toString()
             t3v.setTextColor(Color.BLACK)
             t3v.gravity = Gravity.CENTER
             t3v.setPadding(20, 0, 20, 0)
             tr.addView(t3v)
-            val t4v = TextView(context)
+            val t4v = TextView(activity!!.applicationContext)
             t4v.text = drugList[i].amount.toString()
             t4v.setTextColor(Color.BLACK)
             t4v.gravity = Gravity.CENTER

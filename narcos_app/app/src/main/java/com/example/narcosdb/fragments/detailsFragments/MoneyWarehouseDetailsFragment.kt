@@ -68,12 +68,12 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                     runBlocking {
                         val result = mwViewModel?.insert(moneyWarehouse)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.create_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.create_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.create_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.create_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -81,12 +81,12 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                     runBlocking {
                         val result = mwViewModel?.update(moneyWarehouse)
                         if(result.toString() == "-1"){
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.update_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.update_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }else{
-                            Toast.makeText(context,
-                                HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.update_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                            Toast.makeText(activity!!.applicationContext,
+                                HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.update_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                                 Toast.LENGTH_LONG).show()
                         }
                     }
@@ -100,12 +100,12 @@ class MoneyWarehouseDetailsFragment : Fragment() {
                 runBlocking {
                     val result = mwViewModel?.delete(moneyWarehouse)
                     if(result.toString() == "-1"){
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='red'>"+getString(R.string.delete_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#800000'>"+getString(R.string.delete_mw_error)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(context,
-                            HtmlCompat.fromHtml("<font color='green'>"+getString(R.string.delete_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
+                        Toast.makeText(activity!!.applicationContext,
+                            HtmlCompat.fromHtml("<font color='#00BB2D'>"+getString(R.string.delete_mw)+"</font>", HtmlCompat.FROM_HTML_MODE_LEGACY),
                             Toast.LENGTH_LONG).show()
                     }
                 }

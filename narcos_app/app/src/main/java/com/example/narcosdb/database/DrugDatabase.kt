@@ -7,13 +7,14 @@ import androidx.room.RoomDatabase
 import com.example.narcosdb.dao.*
 import com.example.narcosdb.entity.*
 
-@Database(entities = [Drug::class, MoneyWarehouse::class, DrugWarehouse::class, Contact::class, DrugBuy::class, DrugSales::class, DrugInWarehouse::class], version = 1, exportSchema = false) //add as array if multiple
+@Database(entities = [Drug::class, MoneyWarehouse::class, DrugWarehouse::class, Contact::class, DrugBuy::class, DrugSales::class, DrugInWarehouse::class, Loan::class], version = 1, exportSchema = false) //add as array if multiple
 abstract class DrugDatabase : RoomDatabase() {
     abstract fun drugDao(): DrugDao
     abstract fun moneyWarehouseDao(): MoneyWarehouseDao
     abstract fun drugWarehouseDao(): DrugWarehouseDao
     abstract fun transactionsDao(): TransactionsDao
     abstract fun contactDao(): ContactDao
+    abstract fun loanDao(): LoanDao
 
     companion object {
         @Volatile
